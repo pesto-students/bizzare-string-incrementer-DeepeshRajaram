@@ -5,7 +5,6 @@ bizarreStringIncrementer = (arg) =>{
     let numData = "";
     let numINT;
     let strRemaining = "";
-    let continueousNum = false;
 
     for(let a in arrString)
     {
@@ -21,12 +20,17 @@ bizarreStringIncrementer = (arg) =>{
     if(!isNaN(numData))
     {
         numINT = parseInt(numData);
-        numINT = ++numINT;
+        numINT = (++numINT).toString();
+        if(numINT.split('').length < numData.length){
+            let diff = numData.length - numINT.length;
+            for(let i=0;i<diff;i++){
+                numINT = "0".concat(numINT);
+            }
+        }
     }
     for(let i=0;i<numData.length;i++){
         arrString.pop();
     }
-
     for(let a in arrString)
     {
         strRemaining = strRemaining.concat(arrString[a]);
@@ -37,13 +41,13 @@ bizarreStringIncrementer = (arg) =>{
     else{
         strRemaining = strRemaining.concat("1");
     }
-
-
-    // console.log(lastNumber);
-    // console.log(numData);
-    // console.log(numINT);
     console.log(strRemaining);
 }
 
-bizarreStringIncrementer('a12an');
-bizarreStringIncrementer('a12an21');
+// bizarreStringIncrementer('a12an');
+// bizarreStringIncrementer('a12an21');
+// bizarreStringIncrementer('a12an9');
+// bizarreStringIncrementer('f99oo');
+// bizarreStringIncrementer('f99oo0099');
+// bizarreStringIncrementer('f99oo099');
+// bizarreStringIncrementer('foo0041');
